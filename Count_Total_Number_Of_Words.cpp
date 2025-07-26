@@ -6,7 +6,7 @@ int cnt_Words(char A[])
     int c = 1;
     for (int i = 0; A[i] != '\0'; i++)
     {
-        if (A[i] == 32)
+        if (A[i] == 32 && A[i - 1] != 32) 
         {
             c++;
         }
