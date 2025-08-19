@@ -1,30 +1,32 @@
 #include <iostream>
 using namespace std;
 
-void find_Pair(int A[], int n, int h, int k)
+void find_Pair(int A[], int n, int k)
 {
-    int H[h + 1];
-    for (int i = 0; i < h + 1; i++)
+    int i = 0, j = n - 1;
+    while (i < j)
     {
-        H[i] = 0;
-    }
-    for (int i = 0; i < n; i++)
-    {
-        if (k - A[i] > 0)
+        if (A[i] + A[j] == k)
         {
-            if (H[k - A[i]] != 0)
-            {
-                cout << A[i] << " + " << k - A[i] << " = " << k << endl;
-            }
+            cout << A[i] << " + " << A[j] << " = " << k << endl;
+            i++;
+            j--;
         }
-        H[A[i]] = 1;
+        else if (A[i] + A[j] > k)
+        {
+            j--;
+        }
+        else if (A[i] + A[j] < k)
+        {
+            i++;
+        }
     }
 }
 
 int main()
 {
     int size = 10;
-    int A[size] = {1, 3, 4, 5, 6, 8, 9, 11, 12, 14};
-    find_Pair(A, size, 14, 12);
+    int A[size] = {1, 3, 4, 5, 6, 8, 9, 10, 11, 14};
+    find_Pair(A, size, 12);
     return 0;
 }
